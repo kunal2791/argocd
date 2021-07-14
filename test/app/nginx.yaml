@@ -4,15 +4,22 @@ metadata:
   name: app1
   namespace: argocd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io
   labels:
     app.kubernetes.io/instance: apps
 spec:
   destination:
     server: {{ .Values.apps.server }}
     namespace: {{ .Values.apps.namespace }}
-  project: {{ .Values.project_name }}
+  project: {{ .Values.project }}
   source:
     path: app
     repoURL: {{ .Values.repo_prefix }}/nginx.git
     targetRevision: {{ .Values.branch_name }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=false
