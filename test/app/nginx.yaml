@@ -13,6 +13,6 @@ spec:
     namespace: {{ .Values.apps.namespace }}
   project: {{ .Values.project_name }}
   source:
-    path: deploy/manifest
-    repoURL: {{ .Values.repo_prefix }}/test.git
+    path: .
+    repoURL: {{ .Values.repo_prefix }}/nginx.git
     targetRevision: {{ .Values.branch_name }}
