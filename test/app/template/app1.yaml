@@ -11,7 +11,7 @@ spec:
   destination:
     server: {{ .Values.apps.server }}
     namespace: {{ .Values.apps.namespace }}
-  project: {{ .Values.project }}
+  project: {{ .Values.project_name }}
   source:
     path: app
     repoURL: {{ .Values.repo_prefix }}/nginx.git
